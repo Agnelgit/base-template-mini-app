@@ -3,10 +3,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { useMiniApp } from "@neynar/react";
 import { Header } from "~/components/ui/Header";
-import { Footer } from "~/components/ui/Footer";
+import { NavigationBar } from "~/components/ui/NavigationBar";
 import { Button } from "~/components/ui/Button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
+import { MetaMaskConnector } from "~/components/ui/MetaMaskConnector";
+import SmartContractIntegration from "~/components/SmartContractIntegration";
 
 export type Tab = "dashboard" | "goals" | "expenses" | "analytics";
 
@@ -210,6 +212,12 @@ export default function MoneySaver() {
                 </div>
               </div>
             </div>
+
+            {/* MetaMask Wallet Connection */}
+            <MetaMaskConnector />
+
+            {/* Smart Contract Integration */}
+            <SmartContractIntegration />
 
             {/* Main Goal Progress */}
             <div className="bg-card p-4 rounded-lg border border-border">
@@ -473,11 +481,7 @@ export default function MoneySaver() {
           </div>
         )}
 
-        <Footer
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          showWallet={false}
-        />
+        <NavigationBar activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
     </div>
   );
