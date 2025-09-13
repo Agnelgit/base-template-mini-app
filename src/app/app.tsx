@@ -4,12 +4,12 @@ import dynamic from "next/dynamic";
 import { APP_NAME } from "~/lib/constants";
 
 // note: dynamic import is required for components that use the Frame SDK
-const Demo = dynamic(() => import("~/components/Demo"), {
+const MoneySaver = dynamic(() => import("~/components/MoneySaver"), {
   ssr: false,
 });
 
 export default function App(
-  { title }: { title?: string } = { title: APP_NAME }
+  { title }: { title?: string } = { title: "Money Saver" }
 ) {
-  return <Demo title={title} />;
+  return <MoneySaver />;
 }
